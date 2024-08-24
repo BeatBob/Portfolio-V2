@@ -1,7 +1,9 @@
+import PageLayout from "@/components/PageLayout";
+
 export default function Home() {
   return (
-    <main>
-      <div>Hello world!</div>
+    <main className="relative min-h-max min-w-max">
+      <PageLayout />
     </main>
   );
 }
