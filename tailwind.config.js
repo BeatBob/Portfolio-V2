@@ -35,10 +35,6 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
     extend: {
       colors: {
@@ -98,5 +94,32 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        ".container": {
+          maxWidth: "100%",
+          "@screen sm": {
+            maxWidth: "640px",
+          },
+          "@screen md": {
+            maxWidth: "768px",
+          },
+          "@screen lg": {
+            maxWidth: "1024px",
+          },
+          "@screen xl": {
+            maxWidth: "1280px",
+          },
+          "@screen 2xl": {
+            maxWidth: "1436px",
+          },
+          "@screen 3xl": {
+            maxWidth: "1720px",
+          },
+        },
+      });
+    },
+    require("tailwindcss-animate"),
+  ],
 };

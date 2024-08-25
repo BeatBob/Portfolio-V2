@@ -36,19 +36,10 @@ function PageLayout() {
   }, [theme]);
 
   useEffect(() => {
-    // let scrollPageTo: any;
-
     if (typeof window !== "undefined" && typeof document !== "undefined") {
-      // const loadScrollPageTo = async () => {
-      //   const scrollModule = await import("@/utils/animatedScrollTo");
-      //   scrollPageTo = scrollModule.scrollPageTo;
-      // };
-
-      // loadScrollPageTo();
-
       let scrolledPercentage = 0;
 
-      let isMobile = document.documentElement.scrollWidth < 1024;
+      let isMobile = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
 
       let sectionAbout = document.getElementById("about");
       let sectionExperience = document.getElementById("experience");
@@ -65,10 +56,6 @@ function PageLayout() {
         );
       }
 
-      // const scrollAbout = getScrollValue(sectionAbout, false);
-      // const scrollExperience = getScrollValue(sectionExperience, true);
-      // const scrollWork = getScrollValue(sectionWork, true);
-      // const scrollContact = getScrollValue(sectionContact, true);
       const scrollValue = [
         getScrollValue(sectionAbout, false),
         getScrollValue(sectionExperience, true),
@@ -93,8 +80,6 @@ function PageLayout() {
           ? Math.round((document.documentElement.scrollTop / winHeightPx) * 100)
           : Math.round((document.documentElement.scrollLeft / winWidthtPx) * 100);
 
-        // console.log(scrollDesktop, "scrollDesktop");
-
         setMobile(isMobile);
 
         setProgressBar(scrolledPercentage);
@@ -102,17 +87,9 @@ function PageLayout() {
 
       function onwheel(event: any) {
         if (canScroll) {
-          // let scrollDesktop = document.documentElement.scrollLeft;
           let scrollDesktop = document.documentElement.scrollLeft;
-          // if (isThrottled) return;
-          // event.preventDefault();
-          event.stopImmediatePropagation();
 
-          // console.log(scrollAbout, "scrollAbout");
-          // console.log(scrollExperience, "scrollExperience");
-          // console.log(scrollWork, "scrollWork");
-          // console.log(scrollContact, "scrollContact");
-          console.log(event.wheelDeltaY > 0, "wheelDeltaY > 0");
+          event.stopImmediatePropagation();
 
           if (event.wheelDeltaY > 0) {
             scrolledPercentage !== 0 && scrollPageTo((scrollDesktop -= 200), 300);
@@ -152,28 +129,29 @@ function PageLayout() {
       {/* progress bar  */}
       <>
         <div
-          className={`fixed transition-all right-3 top-3 h-1 w-96 border dark:border-white border-slate-700 z-50 hidden lg:block`}
+          className={`fixed transition-all right-3 top-3 h-1 w-96 border dark:border-white border-slate-700 z-50 hidden lg:block 4xl:hidden`}
         >
           <div style={{ width: `${progressBar}%` }} className={`transition-all h-1 dark:bg-white bg-slate-700`}></div>
         </div>
 
+        {/* mobile & large monitor  */}
         <div
           style={{ height: `${progressBar}%` }}
-          className={`fixed transition-all right-0 top-0 w-1 dark:bg-white bg-slate-700 z-50 lg:hidden`}
+          className={`fixed transition-all right-0 top-0 w-1 dark:bg-white bg-slate-700 z-50 lg:hidden 4xl:block`}
         ></div>
       </>
 
       {/* menu  */}
-      <div className="fixed top-2 lg:top-4 left-2 lg:left-3 right-auto grid lg:grid-cols-[50px_1fr] gap-5 z-50">
-        <div className={`w-fit h-full flex lg:flex-col gap-5`}>
+      <div className="fixed top-2 lg:top-4 left-2 lg:left-3 right-auto grid lg:grid-cols-[50px_1fr] gap-5 4xl:gap-14 z-50">
+        <div className={`w-full 4xl:w-fit h-full flex lg:flex-col gap-5`}>
           {/* menu  */}
           <div
             onClick={() => setMenuToggle((prev) => !prev)}
-            className="group relative cursor-pointer flex flex-col items-center justify-center backdrop-blur-lg transition-all w-16 lg:w-14 aspect-square border lg:border-2 rounded-full border-gray-700 dark:border-white"
+            className="group relative cursor-pointer flex flex-col items-center justify-center backdrop-blur-lg transition-all w-full aspect-square border lg:border-2 rounded-full border-gray-700 dark:border-white"
           >
-            <div className="p-[2px] lg:group-hover:mb-2 lg:mb-1 mb-2 transition-all w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
-            <div className="p-[2px] w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
-            <div className="p-[2px] lg:group-hover:mt-2 lg:mt-1 mt-2 transition-all w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
+            <div className="p-[2px] 4xl:p-1 lg:group-hover:mb-2 lg:mb-1 mb-2 transition-all w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
+            <div className="p-[2px] 4xl:p-1 w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
+            <div className="p-[2px] 4xl:p-1 lg:group-hover:mt-2 lg:mt-1 mt-2 transition-all w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
           </div>
 
           {/* theme  */}
@@ -181,10 +159,10 @@ function PageLayout() {
             {/* theme Light */}
             <div
               onClick={() => setTheme("light")}
-              className="px-4 lg:px-2 lg:py-4 flex justify-center items-center cursor-pointer  border-gray-700 dark:border-white border lg:border-2 rounded-l-full lg:rounded-bl-none lg:rounded-t-full backdrop-blur-lg"
+              className="px-4 lg:px-2 4xl:px-4 lg:py-4 4xl:py-6 flex justify-center items-center cursor-pointer  border-gray-700 dark:border-white border lg:border-2 rounded-l-full lg:rounded-bl-none lg:rounded-t-full backdrop-blur-lg"
             >
               <Sun
-                className="lg:hover:scale-125 hover:scale-90 scale-75 lg:scale-100 transition-all duration-300"
+                className="lg:hover:scale-125 hover:scale-90 scale-75 lg:scale-100 4xl:scale-150 4xl:hover:scale-[1.7] transition-all duration-300"
                 strokeWidth={2}
                 size={20}
                 color={themeColor === "light" ? "black" : "#6b7280"}
@@ -194,10 +172,10 @@ function PageLayout() {
             {/* theme Dark */}
             <div
               onClick={() => setTheme("dark")}
-              className="px-4 lg:px-2 lg:py-4 flex justify-center items-center cursor-pointer  border-gray-700 dark:border-white border-y lg:border-x-2 lg:border-y-0 backdrop-blur-lg"
+              className="px-4 lg:px-2 4xl:px-4 lg:py-4 4xl:py-6 flex justify-center items-center cursor-pointer  border-gray-700 dark:border-white border-y lg:border-x-2 lg:border-y-0 backdrop-blur-lg"
             >
               <Moon
-                className="lg:hover:scale-125 hover:scale-90 scale-75 lg:scale-100 transition-all duration-300"
+                className="lg:hover:scale-125 hover:scale-90 scale-75 lg:scale-100 4xl:scale-150 4xl:hover:scale-[1.7] transition-all duration-300"
                 strokeWidth={2.5}
                 size={20}
                 color={themeColor === "dark" ? "white" : "#6b7280"}
@@ -209,7 +187,7 @@ function PageLayout() {
               onClick={() => setLang("en")}
               className={`${
                 lang === "en" ? "" : "text-gray-500"
-              } group cursor-pointer px-2 lg:py-4 border-gray-700 dark:border-white flex items-center justify-center font-bold text-sm border-y lg:border-x-2 lg:border-b-0 lg:border-t-2 border-l backdrop-blur-lg`}
+              } group cursor-pointer px-2 4xl:px-4 lg:py-4 4xl:py-6 border-gray-700 dark:border-white flex items-center justify-center font-bold text-sm 4xl:text-3xl border-y lg:border-x-2 lg:border-b-0 lg:border-t-2 border-l backdrop-blur-lg`}
             >
               <span className="group-hover:scale-125 transition-all duration-300">EN</span>
             </div>
@@ -219,7 +197,7 @@ function PageLayout() {
               onClick={() => setLang("id")}
               className={`${
                 lang === "id" ? "" : "text-gray-500"
-              } group cursor-pointer px-2 lg:py-4 flex items-center justify-center font-bold text-sm border-gray-700 dark:border-white rounded-r-full lg:rounded-b-full lg:rounded-tr-none border lg:border-2 backdrop-blur-lg`}
+              } group cursor-pointer px-2 4xl:px-4 lg:py-4 4xl:py-6 flex items-center justify-center font-bold text-sm 4xl:text-3xl border-gray-700 dark:border-white rounded-r-full lg:rounded-b-full lg:rounded-tr-none border lg:border-2 backdrop-blur-lg`}
             >
               <span className="group-hover:scale-125 transition-all duration-300">ID</span>
             </div>
@@ -227,12 +205,12 @@ function PageLayout() {
         </div>
 
         {/* menu options */}
-        <div className="w-fit grid gap-4 h-fit lg:text-lg overflow-hidden">
+        <div className="w-fit grid gap-4 h-fit lg:text-lg 4xl:text-3xl overflow-hidden">
           <div
             onClick={() => {
               scrollPageTo(scrollSectionValue.about, 400, mobile ? true : false);
             }}
-            className={`font-normal backdrop-blur-lg px-4 py-2 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-200,(mobile?true:false) ${
+            className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-200,(mobile?true:false) ${
               menuToggle ? "opacity-100 ml-0" : "opacity-100 -ml-96"
             }`}
           >
@@ -242,7 +220,7 @@ function PageLayout() {
             onClick={() => {
               scrollPageTo(scrollSectionValue.experience, 400, mobile ? true : false);
             }}
-            className={`font-normal backdrop-blur-lg px-4 py-2 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-300 ${
+            className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-300 ${
               menuToggle ? "opacity-100 ml-0" : "opacity-100 -ml-96"
             }`}
           >
@@ -252,7 +230,7 @@ function PageLayout() {
             onClick={() => {
               scrollPageTo(scrollSectionValue.work, 400, mobile ? true : false);
             }}
-            className={`font-normal backdrop-blur-lg px-4 py-2 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-500 ${
+            className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-500 ${
               menuToggle ? "opacity-100 ml-0" : "opacity-100 -ml-96"
             }`}
           >
@@ -262,19 +240,21 @@ function PageLayout() {
             onClick={() => {
               scrollPageTo(scrollSectionValue.contact, 400, mobile ? true : false);
             }}
-            className={`font-normal backdrop-blur-lg px-4 py-2 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-700 ${
+            className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-700 ${
               menuToggle ? "opacity-100 ml-0" : "opacity-100 -ml-96"
             }`}
           >
             {lang === "en" ? "Contact" : "Kontak"}
           </div>
-          <div
-            className={`font-normal backdrop-blur-lg px-4 py-2 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-1000 ${
+          <a
+            href="https://drive.google.com/file/d/1MUiOCvabl2l_O8uKUx41U2KvRZXQSMHR/view?usp=sharing"
+            target="_blank"
+            className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-1000 ${
               menuToggle ? "opacity-100 ml-0" : "opacity-100 -ml-96"
             }`}
           >
             Resume
-          </div>
+          </a>
         </div>
       </div>
 
@@ -297,6 +277,7 @@ function PageLayout() {
                   alt="logo"
                   style={{ transform: `rotate(${(progressBar / 100) * 360}deg)` }}
                   fill
+                  priority
                   className={`opacity-20 transition-all`}
                 />
               </div>
@@ -306,15 +287,15 @@ function PageLayout() {
       </div>
 
       {/* content  */}
-      <div className="w-screen lg:w-fit lg:grid lg:grid-cols-[10vw_auto_auto_auto_90vw] lg:max-h-screen overflow-x-visible">
-        <div></div>
+      <div className="w-screen lg:w-fit 4xl:container 4xl:mb-60 lg:grid lg:grid-cols-[6vw_auto_auto_auto_90vw] 4xl:grid-cols-none gap-40 lg:max-h-screen 4xl:max-h-none overflow-x-visible">
+        <div className="4xl:hidden"></div>
 
         {/* about  */}
         <div
           id="about"
-          className="relative pt-28 lg:pt-14 lg:min-h-screen lg:max-w-screen-lg 2xl:lg:max-w-screen-xl lg:mr-40 mb-20 lg:mb-0"
+          className="relative pt-28 lg:pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-screen-lg 2xl:max-w-screen-xl 4xl:max-w-none lg:mr-40 4xl:mr-0 mb-20 lg:mb-0"
         >
-          <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] mb-10 relative text-center lg:text-left lg:left-60">
+          <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative text-center lg:text-left lg:left-60 4xl:left-0">
             {lang === "en" ? "About" : "Profil"}
           </p>
 
@@ -324,16 +305,16 @@ function PageLayout() {
           >
             <div
               style={{ transform: `rotate(${(progressBar / 100) * (mobile ? 0 : -45)}deg)` }}
-              className="group mx-auto w-9/12 lg:w-64 md:min-w-[24rem] aspect-square relative rounded-md"
+              className="group mx-auto w-9/12 lg:w-64 md:min-w-[24rem] 2xl:md:min-w-[30rem] aspect-square relative rounded-md"
             >
               <div className="absolute w-full h-full border-4 border-gray-500 group-hover:border-black group-hover:dark:border-white rounded-md group-hover:-bottom-4 -bottom-6 lg:-bottom-5 group-hover:-right-4 -right-6 lg:-right-5 transition-all"></div>
 
-              <Image src={`/images/Robi-Photo.jpg`} alt="Robi-Photo" fill className={`rounded-md`} />
+              <Image src={`/images/Robi-Photo.jpg`} alt="Robi-Photo" fill priority className={`rounded-md`} />
             </div>
 
             <div
               style={{ left: `${(mobile ? 0 : 50) - progressBar * (mobile ? 0 : 5)}px` }}
-              className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
+              className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
             >
               <p className="mb-5">
                 {lang === "en"
@@ -357,9 +338,9 @@ function PageLayout() {
         {/* experience */}
         <div
           id="experience"
-          className="relative pt-14 lg:min-h-screen lg:max-w-screen-lg 2xl:lg:max-w-screen-xl lg:mr-40 mb-20 lg:mb-0"
+          className="relative pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-screen-lg 2xl:max-w-screen-xl 4xl:max-w-none lg:mr-40 4xl:mr-0 mb-20 lg:mb-0"
         >
-          <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] mb-10 relative text-center lg:text-left lg:left-60">
+          <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative text-center lg:text-left lg:left-60 4xl:left-0">
             {lang === "en" ? "Experience" : "Pengalaman"}
           </p>
 
@@ -369,7 +350,7 @@ function PageLayout() {
           >
             <div
               style={{ left: `${(mobile ? 0 : 250) - progressBar * (mobile ? 0 : 5)}px` }}
-              className="relative mx-auto w-11/12 lg:w-8/12 text-lg lg:text-xl xl:text-2xl font-normal  text-center lg:text-left"
+              className="relative mx-auto w-11/12 lg:w-8/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal  text-center lg:text-left"
             >
               <p className="mb-5">
                 {lang === "en"
@@ -385,7 +366,7 @@ function PageLayout() {
 
             <div
               style={{ left: `${(mobile ? 0 : 250) - progressBar * (mobile ? 0 : 5)}px` }}
-              className="relative mx-auto w-11/12 lg:w-full text-lg lg:text-xl xl:text-2xl font-normal mt-10 lg:mt-0 text-center lg:text-left"
+              className="relative mx-auto w-11/12 lg:w-full text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-10 lg:mt-0 text-center lg:text-left"
             >
               <p className="mb-5">
                 {lang === "en"
@@ -417,29 +398,32 @@ function PageLayout() {
         </div>
 
         {/* work */}
-        <div id="work" className="relative pt-14 lg:min-h-screen lg:max-w-fit lg:mx-40 mb-20 lg:mb-0">
+        <div
+          id="work"
+          className="relative pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-fit 4xl:max-w-none lg:mx-40 4xl:mx-0 mb-20 lg:mb-0"
+        >
           <p
             style={{ left: `${(mobile ? 0 : 100) + (progressBar - 80) * (mobile ? 0 : 2)}px` }}
-            className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] mb-10 relative transition-all text-center lg:text-left "
+            className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative transition-all text-center lg:text-left 4xl:left-0"
           >
             {lang === "en" ? "Some Things I've Built" : "Beberapa Hal yang Saya Buat"}
           </p>
 
-          <div className="lg:w-fit lg:mx-auto lg:flex justify-center items-center gap-20">
-            <>
-              <div className="group mx-auto w-72 md:min-w-[30rem] aspect-square relative bg-white">
-                <div className="absolute group-hover:backdrop-blur-sm w-[95%] h-[105%] group-hover:w-[115%] group-hover:h-[95%] border-[3px] border-white group-hover:bg-[#000000d3] p-5 group-hover:z-20 rounded-md transform bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 transition-all duration-300">
-                  <div className="opacity-0 group-hover:opacity-100 text-white relative w-full h-full">
+          <div className="lg:w-fit lg:mx-auto lg:flex justify-center 4xl:block 4xl:ml-0 items-center gap-20 4xl:mt-20">
+            <div className="4xl:flex gap-20 4xl:mb-20">
+              <div className="group mx-auto w-72 md:min-w-[24rem] 2xl:md:min-w-[30rem] aspect-square relative bg-white">
+                <div className="hidden lg:block absolute group-hover:backdrop-blur-sm w-[95%] h-[105%] group-hover:w-[135%] group-hover:2xl:w-[115%] group-hover:h-[95%] border-[3px] border-white group-hover:bg-[#000000d3] 4xl:group-hover:bg-transparent p-5 group-hover:z-20 4xl:group-hover:-z-10 rounded-md transform bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 transition-all duration-300">
+                  <div className="opacity-0 4xl:hidden group-hover:opacity-100 text-white relative w-full h-full">
                     <p className="rojal_font text-3xl lg:text-4xl tracking-wider mb-3">YIPPY</p>
 
-                    <p className=" text-lg lg:text-xl font-normal">
+                    <p className=" text-lg leading-snug font-normal">
                       {lang === "en"
                         ? "Yippy is an end-to-end corporate gifting solution for your company. For more than 2 years, I was responsible for changing the design to a mobile-responsive web, implementing SEO for organic traffic, improving performance and Core Web Vitals, and creating the Yippy dashboard, which I cannot include in this portfolio."
                         : "Yippy adalah solusi end-to-end corporate gifting untuk perusahaan Anda. Selama lebih dari 2 tahun, saya bertanggung jawab untuk mengubah desain menjadi web yang mobile-responsive, menerapkan SEO untuk organic traffic, meningkatkan performance dan Core Web Vitals, serta membuat dashboard Yippy, yang tidak dapat saya sertakan dalam portofolio ini."}
                     </p>
 
-                    <div className="absolute bottom-2 left-2 w-fit">
-                      <div className="flex flex-wrap items-center gap-5 mb-3 text-lg lg:text-xl font-bold">
+                    <div className="absolute bottom-2 left-0 w-fit">
+                      <div className="flex flex-wrap items-center gap-5 mb-3 text-lg leading-snug font-bold">
                         <p>NextJS</p>
                         <p>Tailwind</p>
                         <p>Sanity</p>
@@ -467,14 +451,14 @@ function PageLayout() {
               </div>
 
               {/* mobile desc yippy  */}
-              <div className="relative w-11/12 mx-auto text-center h-full my-10 lg:hidden">
-                <p className=" text-lg lg:text-xl font-normal">
+              <div className="relative w-11/12 mx-auto text-center 4xl:text-left h-full my-10 lg:hidden 4xl:block text-lg lg:text-xl 4xl:text-3xl">
+                <p className="font-normal">
                   {lang === "en"
                     ? "Yippy is an end-to-end corporate gifting solution for your company. For more than 2 years, I was responsible for changing the design to a mobile-responsive web, implementing SEO for organic traffic, improving performance and Core Web Vitals, and creating the Yippy dashboard, which I cannot include in this portfolio."
                     : "Yippy adalah solusi end-to-end corporate gifting untuk perusahaan Anda. Selama lebih dari 2 tahun, saya bertanggung jawab untuk mengubah desain menjadi web yang mobile-responsive, menerapkan SEO untuk organic traffic, meningkatkan performance dan Core Web Vitals, serta membuat dashboard Yippy, yang tidak dapat saya sertakan dalam portofolio ini."}
                 </p>
 
-                <div className="border-t border-dashed flex flex-wrap items-center justify-center gap-3 mt-4 pt-4 text-lg lg:text-xl font-bold">
+                <div className="border-t border-dashed border-black dark:border-white flex flex-wrap items-center justify-center gap-3 4xl:gap-8 mt-4 pt-4 font-bold">
                   <p>NextJS</p>
                   <p>Tailwind</p>
                   <p>Sanity</p>
@@ -486,28 +470,28 @@ function PageLayout() {
                   <a
                     href="https://yippy.id/"
                     target="blank"
-                    className="relative block w-8 hover:scale-125 aspect-square transition-all"
+                    className="relative block w-8 4xl:w-12 hover:scale-125 aspect-square transition-all"
                   >
                     <Image src={`/images/link.png`} alt="github" fill className={`dark:invert rotate-45`} />
                   </a>
                 </div>
               </div>
-            </>
+            </div>
 
-            <>
-              <div className="group mx-auto w-72 md:min-w-[30rem] aspect-square relative rounded-md bg-white">
-                <div className="absolute group-hover:backdrop-blur-sm w-[95%] h-[105%] group-hover:w-[115%] group-hover:h-[95%] border-[3px] border-white group-hover:bg-[#000000d3] p-5 group-hover:z-20 rounded-md transform bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 transition-all duration-300">
-                  <div className="opacity-0 group-hover:opacity-100 text-white relative w-full h-full">
+            <div className="4xl:flex gap-20">
+              <div className="group mx-auto w-72 md:min-w-[24rem] 2xl:md:min-w-[30rem] aspect-square relative rounded-md bg-white">
+                <div className="hidden lg:block absolute group-hover:backdrop-blur-sm w-[95%] h-[105%] group-hover:w-[135%] group-hover:2xl:w-[115%] group-hover:h-[95%] border-[3px] border-white group-hover:bg-[#000000d3] 4xl:group-hover:bg-transparent p-5 group-hover:z-20 4xl:group-hover:-z-10 rounded-md transform bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 transition-all duration-300">
+                  <div className="opacity-0 4xl:hidden group-hover:opacity-100 text-white relative w-full h-full">
                     <p className="rojal_font text-3xl lg:text-4xl tracking-wider mb-3">PORTFOLIO</p>
 
-                    <p className="opacity-0 group-hover:opacity-100 text-white text-lg lg:text-xl  font-normal">
+                    <p className="opacity-0 group-hover:opacity-100 text-white text-lg font-normal">
                       {lang === "en"
                         ? "Because while working at Yippy i didn't have any personal projects to work on outside of working hours. So, please see my first portfolio which I made approximately 2 years ago."
                         : "Karena selama bekerja di Yippy saya tidak mempunyai proyek pribadi apa pun yang dikerjakan di luar jam kerja. Jadi silahkan lihat portofolio pertama saya yang saya buat kurang lebih 2 tahun yang lalu."}
                     </p>
 
-                    <div className="absolute bottom-2 left-2 w-fit">
-                      <div className="flex flex-wrap items-center gap-5 mb-3 text-lg lg:text-xl font-bold">
+                    <div className="absolute bottom-2 left-0 w-fit">
+                      <div className="flex flex-wrap items-center gap-5 mb-3 text-lg font-bold">
                         <p>NextJS</p>
                         <p>Tailwind</p>
                         <p>Framer Motion</p>
@@ -543,15 +527,15 @@ function PageLayout() {
                 />
               </div>
 
-              {/* mobile desc yippy  */}
-              <div className="relative w-11/12 mx-auto text-center h-full my-10 lg:hidden">
-                <p className=" text-lg lg:text-xl font-normal">
+              {/* mobile desc portfolio  */}
+              <div className="relative w-11/12 mx-auto text-center 4xl:text-left h-full my-10 lg:hidden 4xl:block text-lg lg:text-xl 4xl:text-3xl">
+                <p className="font-normal">
                   {lang === "en"
                     ? "Because while working at Yippy i didn't have any personal projects to work on outside of working hours. So, please see my first portfolio which I made approximately 2 years ago."
                     : "Karena selama bekerja di Yippy saya tidak mempunyai proyek pribadi apa pun yang dikerjakan di luar jam kerja. Jadi silahkan lihat portofolio pertama saya yang saya buat kurang lebih 2 tahun yang lalu."}
                 </p>
 
-                <div className="border-t border-dashed flex flex-wrap items-center justify-center gap-3 mt-4 pt-4 text-lg lg:text-xl font-bold">
+                <div className="border-t border-dashed border-black dark:border-white flex flex-wrap items-center justify-center gap-3 4xl:gap-8 mt-4 pt-4 font-bold">
                   <p>NextJS</p>
                   <p>Tailwind</p>
                   <p>Framer Motion</p>
@@ -562,7 +546,7 @@ function PageLayout() {
                   <a
                     href="https://github.com/BeatBob/Portofolio"
                     target="blank"
-                    className="relative block w-8 hover:scale-125 aspect-square transition-all"
+                    className="relative block w-8 4xl:w-12 hover:scale-125 aspect-square transition-all"
                   >
                     <Image src={`/images/github-mark-white.png`} alt="github" fill className={`invert dark:invert-0`} />
                   </a>
@@ -570,25 +554,22 @@ function PageLayout() {
                   <a
                     href="https://m-robi.vercel.app/"
                     target="blank"
-                    className="relative block w-8 hover:scale-125 aspect-square transition-all"
+                    className="relative block w-8 4xl:w-12 hover:scale-125 aspect-square transition-all"
                   >
                     <Image src={`/images/link.png`} alt="github" fill className={`dark:invert rotate-45`} />
                   </a>
                 </div>
               </div>
-            </>
+            </div>
           </div>
         </div>
 
         {/* contact */}
         <div
           id="contact"
-          className="relative pt-14 lg:min-h-screen lg:max-w-[800px] xl:max-w-screen-lg 2xl:max-w-screen-xl lg:ml-40 2xl:mr-40 mb-32 lg:mb-0"
+          className="relative pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-[800px] xl:max-w-screen-lg 2xl:max-w-screen-xl 4xl:max-w-none lg:ml-40 2xl:mr-40 4xl:mx-0 mb-32 lg:mb-0"
         >
-          <p
-            // style={{ left: `${(mobile ? 0 : 20) + (progressBar - 80) * (mobile ? 0 : 2)}px` }}
-            className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] mb-10 relative text-center lg:text-left lg:left-60"
-          >
+          <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative text-center lg:text-left lg:left-60 4xl:left-0">
             {lang === "en" ? "What's next?" : "Apa Selanjutnya?"}
           </p>
 
@@ -596,7 +577,7 @@ function PageLayout() {
             style={{ left: `${(mobile ? 0 : 150) - (progressBar - 90) * (mobile ? 0 : 15)}px` }}
             className="relative w-full lg:flex items-start gap-20 overflow-hidden lg:overflow-visible"
           >
-            <div className="group mx-auto w-72 md:min-w-[24rem] aspect-square relative rounded-md">
+            <div className="group mx-auto w-72 md:min-w-[24rem] 2xl:md:min-w-[30rem] aspect-square relative rounded-md">
               <div className="absolute w-full h-full border-4 border-gray-500 group-hover:border-black group-hover:dark:border-white rounded-md group-hover:-bottom-4 -bottom-6 lg:-bottom-5 group-hover:-right-4 -right-6 lg:-right-5 transition-all"></div>
 
               <Image src={`/images/Robi-Photo.jpg`} alt="Robi-Photo" fill className={`rounded-md`} />
@@ -604,7 +585,7 @@ function PageLayout() {
 
             <div
               style={{ left: `${(mobile ? 0 : 50) - (progressBar - 90) * (mobile ? 0 : 5)}px` }}
-              className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
+              className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
             >
               <p className="mb-5">{lang === "en" ? "Get In Touch!" : ""}</p>
               <p>
@@ -622,25 +603,14 @@ function PageLayout() {
       </div>
 
       {/* desktop footer  */}
-      <div className="fixed bottom-1 inset-x-0 py-4 px-4 z-50 transition-all duration-500 hidden lg:block">
+      <div className="fixed bottom-1 inset-x-0 py-4 px-4 z-50 transition-all duration-500 hidden lg:block 4xl:hidden">
         <Drawer>
           <div className="w-fit mx-auto">
             <DrawerTrigger asChild>
               <Button variant="outline">{lang === "en" ? "Social Profiles" : "Profil Sosial"}</Button>
             </DrawerTrigger>
           </div>
-          {/* <DrawerTrigger asChild>
-            <div className="fixed inset-x-0 bottom-1 z-50 mt-24 py-3 flex h-auto flex-col rounded-t-3xl border-t-2 border-gray-500 backdrop-blur-md">
-              <div className={`w-40 aspect-[16/2] relative mx-auto`}>
-                <Image
-                  src={`/images/drawer-button.png`}
-                  alt="drawer-button"
-                  fill
-                  className={`transition-all dark:invert opacity-50`}
-                />
-              </div>
-            </div>
-          </DrawerTrigger> */}
+
           <DrawerContent>
             <div className="mx-auto w-full max-w-sm">
               <div className="mt-8 mb-5">
@@ -679,16 +649,16 @@ function PageLayout() {
 
       {/* mobile footer  */}
       <div
-        className={`lg:hidden fixed ${
+        className={`lg:hidden 4xl:block fixed ${
           progressBar >= 98 ? "bottom-0" : "-bottom-40"
         } left-0 right-1 py-4 px-4 z-50 transition-all duration-500 backdrop-blur-sm`}
       >
         <div>
-          <div className="flex items-center gap-5 w-fit mx-auto mb-3">
+          <div className="flex items-center gap-5 4xl:gap-10 w-fit mx-auto mb-3">
             <a
               href="https://github.com/BeatBob"
               target="blank"
-              className="relative block w-8 hover:scale-125 aspect-square transition-all "
+              className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
               <Image src={`/images/github-mark-white.png`} alt="github" fill className={`invert dark:invert-0`} />
             </a>
@@ -696,7 +666,7 @@ function PageLayout() {
             <a
               href="https://x.com/BeatmBob"
               target="blank"
-              className="relative block w-8 hover:scale-125 aspect-square transition-all "
+              className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
               <Image src={`/images/twitter.png`} alt="twitter" fill className={`dark:invert`} />
             </a>
@@ -704,13 +674,13 @@ function PageLayout() {
             <a
               href="https://www.linkedin.com/in/m-robi/"
               target="blank"
-              className="relative block w-8 hover:scale-125 aspect-square transition-all "
+              className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
               <Image src={`/images/linkedin.png`} alt="linkedin" fill className={`dark:invert`} />
             </a>
           </div>
 
-          <p className="text-center">
+          <p className="text-center 4xl:text-2xl">
             ©2024 | Coded by{" "}
             <a
               href="https://github.com/BeatBob"

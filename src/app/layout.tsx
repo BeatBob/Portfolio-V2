@@ -13,7 +13,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "M.Robi Portofolio",
-  description: "Portofolio Website by M.Robi",
+  description: "M. Robi's Portofolio Website by Himself",
 };
 
 export default function RootLayout({
@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
 
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
