@@ -117,25 +117,282 @@ function PageLayout() {
     }
   }, []);
 
+  const [hideFirst, setHideFirst] = useState(false);
+  const [hideSecond, setHideSecond] = useState(false);
+  const [hideThird, setHideThird] = useState(false);
+  const [hideFourth, setHideFourth] = useState(false);
+  const [hideFifth, setHideFifth] = useState(false);
+  const [hideAll, setHideAll] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHideFirst(true);
+    }, 100);
+    setTimeout(() => {
+      setHideSecond(true);
+    }, 250);
+    setTimeout(() => {
+      setHideThird(true);
+    }, 400);
+    setTimeout(() => {
+      setHideFourth(true);
+    }, 550);
+    setTimeout(() => {
+      setHideFifth(true);
+    }, 700);
+    setTimeout(() => {
+      setHideAll(true);
+    }, 1000);
+  }, []);
+
   return (
     <div>
-      {/* <div className="w-screen h-screen z-50 grid grid-cols-5 grid-rows-4 fixed">
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-        <div className="bg-[#5D5F7A] border border-white w-full h-full"></div>
-      </div> */}
+      <div
+        className={`w-screen ${
+          hideAll ? "hidden" : ""
+        } h-screen z-[999999] grid grid-cols-6 lg:grid-cols-8 grid-rows-8 lg:grid-rows-6 fixed`}
+      >
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#47485D] w-full h-full ${
+            hideFifth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#8083A8] w-full h-full ${
+            hideThird ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#3F4051] w-full h-full ${
+            hideFirst ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideSecond ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-[#5D5F7A] w-full h-full ${
+            hideFourth ? "opacity-0 animate-in duration-500 fill-mode-forwards" : ""
+          }`}
+        ></div>
+      </div>
 
       {/* progress bar  */}
       <ProgressBarComponents progressBar={progressBar} />

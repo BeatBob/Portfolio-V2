@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from "./ui/drawer";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -23,14 +23,24 @@ export default function Footer({ progressBar, lang }: Props) {
 
           <DrawerContent>
             <div className="mx-auto w-full max-w-sm">
-              <div className="mt-8 mb-5">
-                <div className="flex items-center justify-center gap-5 w-fit mx-auto my-3 ">
+              <DrawerHeader>
+                <DrawerTitle></DrawerTitle>
+                <DrawerDescription></DrawerDescription>
+              </DrawerHeader>
+              <div className="mb-5">
+                <div className="flex items-center justify-center gap-5 w-fit mx-auto mb-3">
                   <a
                     href="https://github.com/BeatBob"
                     target="blank"
                     className="relative block w-8 hover:scale-125 aspect-square transition-all "
                   >
-                    <Image src={`/images/github-mark-white.png`} alt="github" fill className={`dark:invert-0 invert`} />
+                    <Image
+                      src={`/images/github-mark-white.png`}
+                      sizes="2rem"
+                      alt="github"
+                      fill
+                      className={`dark:invert-0 invert`}
+                    />
                   </a>
 
                   <a
@@ -38,7 +48,7 @@ export default function Footer({ progressBar, lang }: Props) {
                     target="blank"
                     className="relative block w-8 hover:scale-125 aspect-square transition-all "
                   >
-                    <Image src={`/images/twitter.png`} alt="twitter" fill className={`dark:invert`} />
+                    <Image src={`/images/twitter.png`} sizes="2rem" alt="twitter" fill className={`dark:invert`} />
                   </a>
 
                   <a
@@ -46,7 +56,7 @@ export default function Footer({ progressBar, lang }: Props) {
                     target="blank"
                     className="relative block w-8 hover:scale-125 aspect-square transition-all "
                   >
-                    <Image src={`/images/linkedin.png`} alt="linkedin" fill className={`dark:invert`} />
+                    <Image src={`/images/linkedin.png`} sizes="2rem" alt="linkedin" fill className={`dark:invert`} />
                   </a>
                 </div>
 
@@ -70,7 +80,13 @@ export default function Footer({ progressBar, lang }: Props) {
               target="blank"
               className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
-              <Image src={`/images/github-mark-white.png`} alt="github" fill className={`invert dark:invert-0`} />
+              <Image
+                src={`/images/github-mark-white.png`}
+                sizes="3.5rem"
+                alt="github"
+                fill
+                className={`invert dark:invert-0`}
+              />
             </a>
 
             <a
@@ -78,7 +94,7 @@ export default function Footer({ progressBar, lang }: Props) {
               target="blank"
               className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
-              <Image src={`/images/twitter.png`} alt="twitter" fill className={`dark:invert`} />
+              <Image src={`/images/twitter.png`} sizes="3.5rem" alt="twitter" fill className={`dark:invert`} />
             </a>
 
             <a
@@ -86,7 +102,7 @@ export default function Footer({ progressBar, lang }: Props) {
               target="blank"
               className="relative block w-8 4xl:w-14 hover:scale-125 aspect-square transition-all "
             >
-              <Image src={`/images/linkedin.png`} alt="linkedin" fill className={`dark:invert`} />
+              <Image src={`/images/linkedin.png`} sizes="3.5rem" alt="linkedin" fill className={`dark:invert`} />
             </a>
           </div>
 

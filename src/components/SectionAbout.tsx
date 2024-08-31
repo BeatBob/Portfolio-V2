@@ -28,7 +28,7 @@ export default function SectionAbout({ progressBar, mobile, lang }: Props) {
         >
           <div className="absolute w-full h-full border-4 border-gray-500 group-hover:border-black group-hover:dark:border-white rounded-md group-hover:-bottom-4 -bottom-6 lg:-bottom-5 group-hover:-right-4 -right-6 lg:-right-5 transition-all"></div>
 
-          <Image src={`/images/Robi-Photo.jpg`} alt="Robi-Photo" fill priority className={`rounded-md`} />
+          <Image src={`/images/Robi-Photo.jpg`} sizes="100%" alt="Robi-Photo" fill priority className={`rounded-md`} />
         </div>
 
         <div

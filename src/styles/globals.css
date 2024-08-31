@@ -34,3 +34,13 @@ html::-webkit-scrollbar {
 .rojal_font {
   font-family: "Rojal", serif;
 }
+
+@keyframes hidden {
+  100% {
+    opacity: 0;
+  }
+}
+.animate-hidden {
+  animation: hidden 2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  -webkit-animation: hidden 2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}

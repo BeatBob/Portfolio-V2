@@ -25,7 +25,7 @@ export default function SectionContact({ progressBar, mobile, lang }: Props) {
         <div className="group mx-auto w-72 md:min-w-[24rem] 2xl:md:min-w-[30rem] aspect-square relative rounded-md">
           <div className="absolute w-full h-full border-4 border-gray-500 group-hover:border-black group-hover:dark:border-white rounded-md group-hover:-bottom-4 -bottom-6 lg:-bottom-5 group-hover:-right-4 -right-6 lg:-right-5 transition-all"></div>
 
-          <Image src={`/images/Robi-Photo.jpg`} alt="Robi-Photo" fill className={`rounded-md`} />
+          <Image src={`/images/Robi-Photo.jpg`} sizes="100%" alt="Robi-Photo" fill className={`rounded-md`} />
         </div>
 
         <div

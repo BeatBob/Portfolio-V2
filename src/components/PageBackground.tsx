@@ -26,6 +26,7 @@ export default function PageBackground({ progressBar }: Props) {
                 alt="logo"
                 style={{ transform: `rotate(${(progressBar / 100) * 360}deg)` }}
                 fill
+                sizes="100%"
                 priority
                 className={`opacity-20 transition-all`}
               />

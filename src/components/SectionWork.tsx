@@ -54,7 +54,13 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
               </div>
             </div>
 
-            <Image src={`/images/yippy-logo.png`} alt="yippy-logo" fill className={`border-[3px] border-[#000000d3]`} />
+            <Image
+              src={`/images/yippy-logo.png`}
+              sizes="100%"
+              alt="yippy-logo"
+              fill
+              className={`border-[3px] border-[#000000d3]`}
+            />
           </div>
 
           {/* mobile desc yippy  */}
