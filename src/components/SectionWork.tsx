@@ -121,7 +121,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
                     </a>
 
                     <a
-                      href="https://m-robi.vercel.app/"
+                      href="https://m-robi-v1.vercel.app/"
                       target="blank"
                       className="relative block w-8 hover:scale-125 aspect-square transition-all"
                     >
@@ -165,7 +165,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
               </a>
 
               <a
-                href="https://m-robi.vercel.app/"
+                href="https://m-robi-v1.vercel.app/"
                 target="blank"
                 className="relative block w-8 4xl:w-12 hover:scale-125 aspect-square transition-all"
               >
