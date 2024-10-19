@@ -5,6 +5,8 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "../utils/utils";
 import { ThemeProvider } from "../components/theme-provider";
 import StartProvider from "@/context/Start";
+import Analytics from "@/lib/mixpanel";
+import Script from "next/script";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,6 +28,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <Script id="my-script">{`mixpanel.init(${process.env.NEXT_PUBLIC_MIXPANEL_TOKEN}, { debug: true, track_pageview: true, persistence: 'localStorage' });`}</Script> */}
       </head>
 
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>

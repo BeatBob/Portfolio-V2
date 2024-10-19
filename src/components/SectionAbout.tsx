@@ -33,7 +33,7 @@ export default function SectionAbout({ progressBar, mobile, lang }: Props) {
 
         <div
           style={{ left: `${(mobile ? 0 : 50) - progressBar * (mobile ? 0 : 5)}px` }}
-          className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
+          className="relative mx-auto w-11/12 text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
         >
           <p className="mb-5">
             {lang === "en"

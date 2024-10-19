@@ -31,7 +31,7 @@ export default function Menu({
         {/* menu  */}
         <div
           onClick={() => setMenuToggle((prev: boolean) => !prev)}
-          className="group relative cursor-pointer flex flex-col items-center justify-center backdrop-blur-lg transition-all w-full max-w-[3.15rem] aspect-square border lg:border-2 rounded-full border-gray-700 dark:border-white"
+          className="group relative cursor-pointer flex flex-col items-center justify-center backdrop-blur-lg transition-all w-full max-w-[3.15rem] 3xl:max-w-full aspect-square border lg:border-2 rounded-full border-gray-700 dark:border-white"
         >
           <div className="p-[2px] 4xl:p-1 lg:group-hover:mb-2 lg:mb-1 mb-2 transition-all w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
           <div className="p-[2px] 4xl:p-1 w-fit h-fit mx-auto rounded-full bg-black dark:bg-white"></div>
@@ -39,7 +39,7 @@ export default function Menu({
         </div>
 
         {/* theme  */}
-        <div className="w-full  grid grid-cols-4 lg:block">
+        <div className="w-full grid grid-cols-4 lg:block">
           {/* theme Light */}
           <div
             onClick={() => setTheme("light")}

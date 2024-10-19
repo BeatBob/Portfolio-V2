@@ -22,7 +22,7 @@ export default function SectionExperience({ progressBar, mobile, lang }: Props) 
       >
         <div
           style={{ left: `${(mobile ? 0 : 250) - progressBar * (mobile ? 0 : 5)}px` }}
-          className="relative mx-auto w-11/12 lg:w-8/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal  text-center lg:text-left"
+          className="relative mx-auto w-11/12 lg:w-8/12 text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl font-normal  text-center lg:text-left"
         >
           <p className="mb-5">
             {lang === "en"
@@ -38,7 +38,7 @@ export default function SectionExperience({ progressBar, mobile, lang }: Props) 
 
         <div
           style={{ left: `${(mobile ? 0 : 250) - progressBar * (mobile ? 0 : 5)}px` }}
-          className="relative mx-auto w-11/12 lg:w-full text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-10 lg:mt-0 text-center lg:text-left"
+          className="relative mx-auto w-11/12 lg:w-full text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl font-normal mt-10 lg:mt-0 text-center lg:text-left"
         >
           <p className="mb-5">
             {lang === "en"
@@ -51,7 +51,7 @@ export default function SectionExperience({ progressBar, mobile, lang }: Props) 
               "HTML/CSS",
               "JavaScript (ES6)",
               "React",
-              "NextJs",
+              "Next JS",
               "Sanity",
               "Redux Toolkit",
               "GIT",
@@ -60,6 +60,19 @@ export default function SectionExperience({ progressBar, mobile, lang }: Props) 
               "Axios",
               "Chrome DevTools",
             ].map((item) => (
+              <li className="list-disc font-bold" key={item}>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="my-5">
+            {lang === "en"
+              ? "and some more that I'm currently studying"
+              : "dan beberapa lagi yang sedang saya pelajari"}
+            :
+          </p>
+          <ul className="grid grid-cols-2 ml-10 text-left">
+            {["Express JS", "Typescript"].map((item) => (
               <li className="list-disc font-bold" key={item}>
                 {item}
               </li>

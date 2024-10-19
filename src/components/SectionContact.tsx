@@ -39,9 +39,14 @@ export default function SectionContact({ progressBar, mobile, lang }: Props) {
               : "Saya selalu terbuka untuk peluang baru. Apakah Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi saya. Saya akan berusaha sebaik mungkin untuk membalas pesan Anda!"}
           </p>
 
-          <div className="px-5 py-3 border-2 cursor-pointer border-gray-600 dark:border-white w-fit mt-10 mx-auto lg:mx-0 backdrop-blur-md">
+          <a
+            href="mailto:mrobichaniago@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-3 border-2 cursor-pointer border-gray-600 dark:border-white w-fit mt-10 mx-auto lg:mx-0 backdrop-blur-md block"
+          >
             {lang === "en" ? "Send Message" : "Kirim Pesan"}
-          </div>
+          </a>
         </div>
       </div>
     </div>
