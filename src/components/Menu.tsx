@@ -1,17 +1,18 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
+import { TLink } from "./UiTag/TLink";
 
 type Props = {
   setMenuToggle: any;
   menuToggle: boolean;
   setTheme: any;
   themeColor: string;
-  setLang: any;
   lang: string;
   scrollSectionValue: any;
   scrollPageTo: any;
   mobile: boolean;
+  dictPage: { [key: string]: string };
 };
 
 export default function Menu({
@@ -19,11 +20,11 @@ export default function Menu({
   menuToggle,
   setTheme,
   themeColor,
-  setLang,
   lang,
   scrollSectionValue,
   scrollPageTo,
   mobile,
+  dictPage,
 }: Props) {
   return (
     <div className="fixed top-0 left-0 right-0 lg:right-auto lg:bottom-0 pb-5 lg:pr-5 pl-4 pt-4 grid lg:grid-cols-[50px_1fr] gap-5 4xl:gap-14 z-50 bg-gradient-to-b lg:bg-gradient-to-r from-white dark:from-gray-900 to-transparent">
@@ -67,24 +68,26 @@ export default function Menu({
           </div>
 
           {/* lang EN */}
-          <div
-            onClick={() => setLang("en")}
+          <TLink
+            isLangNav={true}
+            href={"/en"}
             className={`${
               lang === "en" ? "" : "text-gray-400"
             } group cursor-pointer px-2 4xl:px-4 lg:py-4 4xl:py-6 border-gray-700 dark:border-white flex items-center justify-center font-bold text-sm 4xl:text-3xl border-y lg:border-x-2 lg:border-b-0 lg:border-t-2 border-l backdrop-blur-lg`}
           >
             <span className="group-hover:scale-125 transition-all duration-300">EN</span>
-          </div>
+          </TLink>
 
-          {/* lang EN */}
-          <div
-            onClick={() => setLang("id")}
+          {/* lang ID */}
+          <TLink
+            isLangNav={true}
+            href={"/id"}
             className={`${
               lang === "id" ? "" : "text-gray-400"
             } group cursor-pointer px-2 4xl:px-4 lg:py-4 4xl:py-6 flex items-center justify-center font-bold text-sm 4xl:text-3xl border-gray-700 dark:border-white rounded-r-full lg:rounded-b-full lg:rounded-tr-none border lg:border-2 backdrop-blur-lg`}
           >
             <span className="group-hover:scale-125 transition-all duration-300">ID</span>
-          </div>
+          </TLink>
         </div>
       </div>
 
@@ -98,7 +101,7 @@ export default function Menu({
             menuToggle ? "opacity-100 ml-0 mt-0" : "opacity-100 -mt-96 lg:-ml-96"
           }`}
         >
-          {lang === "en" ? "About" : "Profil"}
+          {dictPage["about"]}
         </div>
         <div
           onClick={() => {
@@ -108,7 +111,7 @@ export default function Menu({
             menuToggle ? "opacity-100 ml-0 mt-0" : "opacity-100 -mt-96 lg:-ml-96"
           }`}
         >
-          {lang === "en" ? "Experience" : "Pengalaman"}
+          {dictPage["experience"]}
         </div>
         <div
           onClick={() => {
@@ -118,7 +121,7 @@ export default function Menu({
             menuToggle ? "opacity-100 ml-0 mt-0" : "opacity-100 -mt-96 lg:-ml-96"
           }`}
         >
-          {lang === "en" ? "Work" : "Pekerjaan"}
+          {dictPage["work"]}
         </div>
         <div
           onClick={() => {
@@ -128,10 +131,10 @@ export default function Menu({
             menuToggle ? "opacity-100 ml-0 mt-0" : "opacity-100 -mt-96 lg:-ml-96"
           }`}
         >
-          {lang === "en" ? "Contact" : "Kontak"}
+          {dictPage["contact"]}
         </div>
         <a
-          href="https://drive.google.com/file/d/1MUiOCvabl2l_O8uKUx41U2KvRZXQSMHR/view?usp=sharing"
+          href="https://drive.google.com/file/d/19NfYZtnUg281Ok9-sGiabnYSKH46PMxC/view?usp=sharing"
           target="_blank"
           className={`font-normal backdrop-blur-lg px-4 4xl:px-6 py-2 4xl:py-3 rounded-full w-fit h-fit border-2 border-gray-700 dark:border-white cursor-pointer transition-all duration-200 lg:duration-1000 ${
             menuToggle ? "opacity-100 ml-0 mt-0" : "opacity-100 -mt-96 lg:-ml-96"

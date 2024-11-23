@@ -5,8 +5,6 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "../utils/utils";
 import { ThemeProvider } from "../components/theme-provider";
 import StartProvider from "@/context/Start";
-import Analytics from "@/lib/mixpanel";
-import Script from "next/script";
 
 const fontSans = FontSans({
   subsets: ["latin"],

@@ -1,6 +1,5 @@
 "use client";
 
-// import { useStart } from "@/context/Start";
 import { scrollPageTo } from "@/utils/animatedScrollTo";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -16,15 +15,19 @@ import ProgressBarComponents from "../ProgressBarComponents";
 import LoadingPage from "../LoadingPage";
 import Analytics from "@/lib/mixpanel";
 
-function PageLayout() {
+type Page = {
+  dictPage: { [key: string]: string };
+  lang: string;
+};
+
+function PageLayout({ dictPage, lang }: Page) {
   const [progressBar, setProgressBar] = useState(0);
   const [mobile, setMobile] = useState(true);
+  const [IsBeingScroll, setIsBeingScroll] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
+  const [themeColor, setThemeColor] = useState("");
   const [scrollSectionValue, setScrollSectionValue] = useState({ about: 0, experience: 0, work: 0, contact: 0 });
   const { theme, setTheme } = useTheme();
-  const [lang, setLang] = useState("en");
-  const [themeColor, setThemeColor] = useState("");
-  // const { isEnter } = useStart();
 
   useEffect(() => {
     setThemeColor(theme || "black");
@@ -34,11 +37,23 @@ function PageLayout() {
     Analytics.init();
     Analytics.track("Home");
 
+    const timeoutId = setTimeout(() => {
+      const isMobileView = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
+      const winWidthtPx = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+      const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+      let scroll = isMobileView
+        ? Math.round((document.documentElement.scrollTop / winHeightPx) * 100)
+        : Math.round((document.documentElement.scrollLeft / winWidthtPx) * 100);
+
+      setMobile(isMobileView);
+      setProgressBar(scroll);
+    }, 100);
+
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       let scrolledPercentage = 0;
 
       let isMobile = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
-
       let sectionAbout = document.getElementById("about");
       let sectionExperience = document.getElementById("experience");
       let sectionWork = document.getElementById("work");
@@ -72,6 +87,7 @@ function PageLayout() {
       });
 
       function scrollProgress() {
+        setIsBeingScroll(true);
         const winWidthtPx = document.documentElement.scrollWidth - document.documentElement.clientWidth;
         const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         scrolledPercentage = isMobile
@@ -85,6 +101,7 @@ function PageLayout() {
 
       function onwheel(event: any) {
         if (canScroll) {
+          setIsBeingScroll(true);
           let scrollDesktop = document.documentElement.scrollLeft;
 
           event.stopImmediatePropagation();
@@ -118,6 +135,7 @@ function PageLayout() {
       return () => {
         window.removeEventListener("scroll", scrollProgress);
         !isMobile && window.removeEventListener("wheel", onwheel);
+        clearTimeout(timeoutId);
       };
     }
   }, []);
@@ -126,21 +144,9 @@ function PageLayout() {
     <div>
       <LoadingPage progressBar={progressBar} />
 
-      <ProgressBarComponents progressBar={progressBar} />
+      <ProgressBarComponents progressBar={progressBar} IsBeingScroll={IsBeingScroll} />
 
-      <>
-        <div
-          className={`fixed transition-all right-3 top-3 h-1 w-96 border dark:border-white border-slate-700 z-50 hidden lg:block 4xl:hidden`}
-        >
-          <div style={{ width: `${progressBar}%` }} className={`transition-all h-1 dark:bg-white bg-slate-700`}></div>
-        </div>
-
-        {/* mobile & large monitor  */}
-        <div
-          style={{ height: `${progressBar}%` }}
-          className={`fixed transition-all right-0 top-0 w-1 dark:bg-white bg-slate-700 z-50 lg:hidden 4xl:block`}
-        ></div>
-      </>
+      <PageBackground progressBar={progressBar} />
 
       {/* nav  */}
       <Menu
@@ -148,34 +154,32 @@ function PageLayout() {
         menuToggle={menuToggle}
         setTheme={setTheme}
         themeColor={themeColor}
-        setLang={setLang}
         lang={lang}
         scrollSectionValue={scrollSectionValue}
         scrollPageTo={scrollPageTo}
         mobile={mobile}
+        dictPage={dictPage}
       />
-
-      <PageBackground progressBar={progressBar} />
 
       {/* content  */}
       <div className="w-screen lg:w-fit 4xl:container 4xl:mb-60 lg:grid lg:grid-cols-[6vw_auto_auto_auto_90vw] 4xl:grid-cols-none gap-40 lg:max-h-screen 4xl:max-h-none overflow-x-visible">
         <div className="4xl:hidden"></div>
 
         {/* about  */}
-        <SectionAbout progressBar={progressBar} mobile={mobile} lang={lang} />
+        <SectionAbout progressBar={progressBar} mobile={mobile} lang={lang} dictPage={dictPage} />
 
         {/* experience */}
-        <SectionExperience progressBar={progressBar} mobile={mobile} lang={lang} />
+        <SectionExperience progressBar={progressBar} mobile={mobile} lang={lang} dictPage={dictPage} />
 
         {/* work */}
-        <SectionWork progressBar={progressBar} mobile={mobile} lang={lang} />
+        <SectionWork progressBar={progressBar} mobile={mobile} lang={lang} dictPage={dictPage} />
 
         {/* contact */}
-        <SectionContact progressBar={progressBar} mobile={mobile} lang={lang} />
+        <SectionContact progressBar={progressBar} mobile={mobile} lang={lang} dictPage={dictPage} />
       </div>
 
       {/* Footer */}
-      <Footer progressBar={progressBar} lang={lang} />
+      <Footer progressBar={progressBar} lang={lang} dictPage={dictPage} />
     </div>
   );
 }

@@ -2,9 +2,10 @@
 
 type Props = {
   progressBar: Number | any;
+  IsBeingScroll: boolean;
 };
 
-export default function ProgressBarComponents({ progressBar }: Props) {
+export default function ProgressBarComponents({ progressBar, IsBeingScroll }: Props) {
   return (
     <>
       <div

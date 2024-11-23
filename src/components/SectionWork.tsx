@@ -6,20 +6,21 @@ type Props = {
   progressBar: Number | any;
   mobile: boolean;
   lang: string;
+  dictPage: { [key: string]: string };
 };
 
-export default function SectionWork({ progressBar, mobile, lang }: Props) {
+export default function SectionWork({ progressBar, mobile, lang, dictPage }: Props) {
   return (
     <div
       id="work"
       className="relative pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-fit 4xl:max-w-none lg:mx-40 4xl:mx-0 mb-20 lg:mb-0"
     >
-      <p
+      <h2
         style={{ left: `${(mobile ? 0 : 100) + (progressBar - 80) * (mobile ? 0 : 2)}px` }}
         className="rojal_font px-3 text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative transition-all text-center lg:text-left 4xl:left-0"
       >
-        {lang === "en" ? "Some Things I've Built" : "Beberapa Hal yang Saya Buat"}
-      </p>
+        {dictPage["work_title"]}
+      </h2>
 
       <div className="lg:w-fit lg:mx-auto lg:flex justify-center 4xl:block 4xl:ml-0 items-center gap-20 4xl:mt-20">
         <div className="4xl:flex gap-20 4xl:mb-20">
@@ -28,11 +29,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
               <div className="opacity-0 4xl:hidden group-hover:opacity-100 text-white relative w-full h-full">
                 <p className="rojal_font text-3xl lg:text-4xl tracking-wider mb-3">YIPPY</p>
 
-                <p className=" text-lg leading-snug font-normal">
-                  {lang === "en"
-                    ? "Yippy is an end-to-end corporate gifting solution for your company. For more than 2 years, I was responsible for changing the design to a mobile-responsive web, implementing SEO for organic traffic, improving performance and Core Web Vitals, and creating the Yippy dashboard, which I cannot include in this portfolio."
-                    : "Yippy adalah solusi end-to-end corporate gifting untuk perusahaan Anda. Selama lebih dari 2 tahun, saya bertanggung jawab untuk mengubah desain menjadi web yang mobile-responsive, menerapkan SEO untuk organic traffic, meningkatkan performance dan Core Web Vitals, serta membuat dashboard Yippy, yang tidak dapat saya sertakan dalam portofolio ini."}
-                </p>
+                <p className=" text-lg leading-snug font-normal">{dictPage["work_one"]}</p>
 
                 <div className="absolute bottom-2 left-0 w-fit">
                   <div className="flex flex-wrap items-center gap-5 mb-3 text-lg leading-snug font-bold">
@@ -65,11 +62,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
 
           {/* mobile desc yippy  */}
           <div className="relative w-11/12 mx-auto text-center 4xl:text-left h-full my-10 lg:hidden 4xl:block text-lg lg:text-xl 4xl:text-3xl">
-            <p className="font-normal">
-              {lang === "en"
-                ? "Yippy is an end-to-end corporate gifting solution for your company. For more than 2 years, I was responsible for changing the design to a mobile-responsive web, implementing SEO for organic traffic, improving performance and Core Web Vitals, and creating the Yippy dashboard, which I cannot include in this portfolio."
-                : "Yippy adalah solusi end-to-end corporate gifting untuk perusahaan Anda. Selama lebih dari 2 tahun, saya bertanggung jawab untuk mengubah desain menjadi web yang mobile-responsive, menerapkan SEO untuk organic traffic, meningkatkan performance dan Core Web Vitals, serta membuat dashboard Yippy, yang tidak dapat saya sertakan dalam portofolio ini."}
-            </p>
+            <p className="font-normal">{dictPage["work_one"]}</p>
 
             <div className="border-t border-dashed border-black dark:border-white flex flex-wrap items-center justify-center gap-3 4xl:gap-8 mt-4 pt-4 font-bold">
               <p>NextJS</p>
@@ -98,9 +91,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
                 <p className="rojal_font text-3xl lg:text-4xl tracking-wider mb-3">PORTFOLIO</p>
 
                 <p className="opacity-0 group-hover:opacity-100 text-white text-lg font-normal">
-                  {lang === "en"
-                    ? "Because while working at Yippy i didn't have any personal projects to work on outside of working hours. So, please see my first portfolio which I made approximately 2 years ago."
-                    : "Karena selama bekerja di Yippy saya tidak mempunyai proyek pribadi apa pun yang dikerjakan di luar jam kerja. Jadi silahkan lihat portofolio pertama saya yang saya buat kurang lebih 2 tahun yang lalu."}
+                  {dictPage["work_two"]}
                 </p>
 
                 <div className="absolute bottom-2 left-0 w-fit">
@@ -142,11 +133,7 @@ export default function SectionWork({ progressBar, mobile, lang }: Props) {
 
           {/* mobile desc portfolio  */}
           <div className="relative w-11/12 mx-auto text-center 4xl:text-left h-full my-10 lg:hidden 4xl:block text-lg lg:text-xl 4xl:text-3xl">
-            <p className="font-normal">
-              {lang === "en"
-                ? "Because while working at Yippy i didn't have any personal projects to work on outside of working hours. So, please see my first portfolio which I made approximately 2 years ago."
-                : "Karena selama bekerja di Yippy saya tidak mempunyai proyek pribadi apa pun yang dikerjakan di luar jam kerja. Jadi silahkan lihat portofolio pertama saya yang saya buat kurang lebih 2 tahun yang lalu."}
-            </p>
+            <p className="font-normal">{dictPage["work_two"]}</p>
 
             <div className="border-t border-dashed border-black dark:border-white flex flex-wrap items-center justify-center gap-3 4xl:gap-8 mt-4 pt-4 font-bold">
               <p>NextJS</p>

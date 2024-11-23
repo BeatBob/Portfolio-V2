@@ -1,0 +1,25 @@
+{
+  "about": "About",
+  "experience": "Experience",
+  "work": "Work",
+  "contact": "Contact",
+
+  "about_one": "Hello! My name is M. Robi, a self-taught Front-end Developer with a passion for creating digital experiences. My journey into web development kicked off in November 2020 when I started learning about Digital Marketing and quickly discovered a passion for coding.",
+  "about_two": "I've learned a lot from online resources like FreeCodeCamp, YouTube, and Stack Overflow, gaining skills in HTML, CSS, JavaScript, and various frameworks.",
+  "about_three": "Currently, I'm focused on advancing my career in Web Development. I'm excited about the future and eager to continue growing and improving in this field.",
+
+  "experience_one": "I specialize in creating responsive, high-performance websites that are both professional and easy to use. My expertise is in front-end development, including HTML, CSS, and JavaScript. I have experience building small to medium-sized web applications, always trying to adhere to best practices to ensure quality and efficiency.",
+  "experience_two": "Visit my LinkedIn profile for more details, or feel free to contact me directly.",
+  "experience_three": "Here are a few technologies I've been working with recently",
+  "experience_four": "and several more that I am interested in learning",
+
+  "work_title": "Some Things I've Built",
+  "work_one": "Yippy is an end-to-end corporate gifting solution for your company. For more than 2 years, I was responsible for changing the design to a mobile-responsive web, implementing SEO for organic traffic, improving performance and Core Web Vitals, and creating the Yippy dashboard, which I cannot include in this portfolio.",
+  "work_two": "Because while working at Yippy i didn't have any personal projects to work on outside of working hours. So, please see my first portfolio which I made approximately 2 years ago.",
+
+  "contact_title": "What's next?",
+  "contact_one": "I’m always open to new opportunities and would love to hear from you. Whether you have a question or just want to say hello, feel free to reach out. I’ll do my best to get back to you",
+
+  "social": "Social Profiles",
+  "message": "Send Message"
+}

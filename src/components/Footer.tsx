@@ -7,9 +7,10 @@ import { Button } from "./ui/button";
 type Props = {
   progressBar: Number | any;
   lang: string;
+  dictPage: { [key: string]: string };
 };
 
-export default function Footer({ progressBar, lang }: Props) {
+export default function Footer({ progressBar, lang, dictPage }: Props) {
   return (
     <>
       {/* desktop footer  */}
@@ -17,7 +18,7 @@ export default function Footer({ progressBar, lang }: Props) {
         <Drawer>
           <div className="w-fit mx-auto">
             <DrawerTrigger asChild>
-              <Button variant="outline">{lang === "en" ? "Social Profiles" : "Profil Sosial"}</Button>
+              <Button variant="outline">{dictPage["social"]}</Button>
             </DrawerTrigger>
           </div>
 

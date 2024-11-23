@@ -1,0 +1,25 @@
+{
+  "about": "Profil",
+  "experience": "Pengalaman",
+  "work": "Pekerjaan",
+  "contact": "Kontak",
+
+  "about_one": "Halo! Nama saya M. Robi, seorang self-taught Front-end Developer dan saya menikmati menciptakan hal-hal yang hidup di internet seperti website. Perjalanan saya dalam web development dimulai pada November 2020 ketika saya ingin belajar tentang Digital Marketing, namun saya menemukan minat terhadap coding.",
+  "about_two": "Saya telah belajar banyak dari sumber online seperti FreeCodeCamp, YouTube, dan Stack Overflow, dan memperoleh keterampilan dalam HTML, CSS, JavaScript, dan Framework nya.",
+  "about_three": "Saat ini, saya fokus untuk meningkatkan karir saya di bidang web development. Saya penasaran tentang masa depan dan bersemangat untuk terus tumbuh dan berkembang di bidang ini.",
+
+  "experience_one": "Saya berspesialisasi dalam membuat situs web responsif dan berkinerja tinggi yang profesional dan mudah digunakan. Keahlian saya meliputi front-end development, termasuk HTML, CSS, dan JavaScript. Saya memiliki pengalaman dalam membangun aplikasi web berskala kecil hingga menengah, selalu mencoba mematuhi best practices untuk memastikan kualitas dan efisiensi.",
+  "experience_two": "Untuk informasi lebih lanjut, kunjungi profil LinkedIn saya atau hubungi saya langsung.",
+  "experience_three": "Berikut beberapa teknologi yang saya gunakan",
+  "experience_four": "dan beberapa lagi yang saya tertarik pelajari",
+
+  "work_title": "Beberapa Hal yang Saya Buat",
+  "work_one": "Yippy adalah solusi end-to-end corporate gifting untuk perusahaan Anda. Selama lebih dari 2 tahun, saya bertanggung jawab untuk mengubah desain menjadi web yang mobile-responsive, menerapkan SEO untuk organic traffic, meningkatkan performance dan Core Web Vitals, serta membuat dashboard Yippy, yang tidak dapat saya sertakan dalam portofolio ini.",
+  "work_two": "Karena selama bekerja di Yippy saya tidak mempunyai proyek pribadi apa pun yang dikerjakan di luar jam kerja. Jadi silahkan lihat portofolio pertama saya yang saya buat kurang lebih 2 tahun yang lalu.",
+
+  "contact_title": "Apa Selanjutnya?",
+  "contact_one": "Saya selalu terbuka untuk peluang baru. Apakah Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi saya. Saya akan berusaha sebaik mungkin untuk membalas pesan Anda!",
+
+  "social": "Profil Sosial",
+  "message": "Kirim Pesan"
+}

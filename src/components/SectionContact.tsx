@@ -6,17 +6,18 @@ type Props = {
   progressBar: Number | any;
   mobile: boolean;
   lang: string;
+  dictPage: { [key: string]: string };
 };
 
-export default function SectionContact({ progressBar, mobile, lang }: Props) {
+export default function SectionContact({ progressBar, mobile, lang, dictPage }: Props) {
   return (
     <div
       id="contact"
       className="relative pt-14 lg:min-h-screen 4xl:min-h-fit lg:max-w-[800px] xl:max-w-screen-lg 2xl:max-w-screen-xl 4xl:max-w-none lg:ml-40 2xl:mr-40 4xl:mx-0 mb-32 lg:mb-0"
     >
-      <p className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative text-center lg:text-left lg:left-60 4xl:left-0">
-        {lang === "en" ? "What's next?" : "Apa Selanjutnya?"}
-      </p>
+      <h2 className="rojal_font text-5xl lg:text-9xl 2xl:text-[10rem] 4xl:text-[13rem] mb-10 relative text-center lg:text-left lg:left-60 4xl:left-0">
+        {dictPage["contact_title"]}
+      </h2>
 
       <div
         style={{ left: `${(mobile ? 0 : 150) - (progressBar - 90) * (mobile ? 0 : 15)}px` }}
@@ -33,11 +34,7 @@ export default function SectionContact({ progressBar, mobile, lang }: Props) {
           className="relative mx-auto w-11/12 text-lg lg:text-xl xl:text-2xl 4xl:text-3xl font-normal mt-20 lg:mt-0 text-center lg:text-left"
         >
           <p className="mb-5">{lang === "en" ? "Get In Touch!" : ""}</p>
-          <p>
-            {lang === "en"
-              ? `I’m always open to new opportunities and would love to hear from you. Whether you have a question or just want to say hello, feel free to reach out. I’ll do my best to get back to you`
-              : "Saya selalu terbuka untuk peluang baru. Apakah Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi saya. Saya akan berusaha sebaik mungkin untuk membalas pesan Anda!"}
-          </p>
+          <p>{dictPage["contact_one"]}</p>
 
           <a
             href="mailto:mrobichaniago@gmail.com"
@@ -45,7 +42,7 @@ export default function SectionContact({ progressBar, mobile, lang }: Props) {
             rel="noopener noreferrer"
             className="px-5 py-3 border-2 cursor-pointer border-gray-600 dark:border-white w-fit mt-10 mx-auto lg:mx-0 backdrop-blur-md block"
           >
-            {lang === "en" ? "Send Message" : "Kirim Pesan"}
+            {dictPage["message"]}
           </a>
         </div>
       </div>
