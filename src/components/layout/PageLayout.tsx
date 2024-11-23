@@ -37,6 +37,8 @@ function PageLayout({ dictPage, lang }: Page) {
     Analytics.init();
     Analytics.track("Home");
 
+    let isMobile = true;
+
     const timeoutId = setTimeout(() => {
       const isMobileView = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
       const winWidthtPx = document.documentElement.scrollWidth - document.documentElement.clientWidth;
@@ -46,6 +48,7 @@ function PageLayout({ dictPage, lang }: Page) {
         ? Math.round((document.documentElement.scrollTop / winHeightPx) * 100)
         : Math.round((document.documentElement.scrollLeft / winWidthtPx) * 100);
 
+      isMobile = isMobileView;
       setMobile(isMobileView);
       setProgressBar(scroll);
     }, 100);
@@ -53,7 +56,7 @@ function PageLayout({ dictPage, lang }: Page) {
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       let scrolledPercentage = 0;
 
-      let isMobile = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
+      // let isMobile = document.documentElement.scrollWidth < 1024 || document.documentElement.clientWidth > 2200;
       let sectionAbout = document.getElementById("about");
       let sectionExperience = document.getElementById("experience");
       let sectionWork = document.getElementById("work");
